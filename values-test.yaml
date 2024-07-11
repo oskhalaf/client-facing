@@ -1,0 +1,45 @@
+# Default values for your Helm chart
+replicaCount: 1
+image:
+  repository: sobhisaede/client-facing-test
+  tag: 0.0.2
+  pullPolicy: IfNotPresent
+
+
+# MongoDB configuration
+mongodb:
+  enabled: true
+  host: 10.0.72.224
+  port: 27017
+  database: cmon
+
+# Kafka configuration
+kafka:
+  bootstrapServers: 10.0.73.91:9092
+  topic: CMON.BACKEND.EVENTS
+
+
+
+# Service configuration
+service:
+  name: client-facing-chart
+  type: LoadBalancer
+  port: 8080
+
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+# Pod annotations
+podAnnotations: {}
