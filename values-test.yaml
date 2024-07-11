@@ -9,13 +9,13 @@ image:
 # MongoDB configuration
 mongodb:
   enabled: true
-  host: 10.0.72.224
-  port: 27017
+  host: 10.0.73.168
+  port: 29027
   database: cmon
 
 # Kafka configuration
 kafka:
-  bootstrapServers: 10.0.73.91:9092
+  bootstrapServers: 10.105.22.67:9093
   topic: CMON.BACKEND.EVENTS
 
 
