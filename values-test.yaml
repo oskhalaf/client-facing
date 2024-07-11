@@ -1,28 +1,31 @@
 # Default values for your Helm chart
 replicaCount: 1
 image:
-  repository: sobhisaede/client-facing-test
-  tag: latest
+  repository: hdf-docker-registry/cmon-mobile/service-client-facing
+  tag: 0.0.2
   pullPolicy: IfNotPresent
 
+imagePullSecrets:
+  - name: nexus-docker-secret
 
 # MongoDB configuration
 mongodb:
   enabled: true
-  host: 10.0.73.168
-  port: 29027
+  host: 10.0.72.224
+  port: 27017
   database: cmon
 
 # Kafka configuration
 kafka:
-  bootstrapServers: 10.105.22.67:9093
+  bootstrapServers: 10.0.73.91:9092
   topic: CMON.BACKEND.EVENTS
 
-
+nexus:
+  secret: nexus-secret
 
 # Service configuration
 service:
-  name: client-facing-chart
+  name: client-facing
   type: LoadBalancer
   port: 8080
 
