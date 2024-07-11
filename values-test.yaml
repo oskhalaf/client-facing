@@ -2,7 +2,7 @@
 replicaCount: 1
 image:
   repository: sobhisaede/client-facing-test
-  tag: 0.0.2
+  tag: latest
   pullPolicy: IfNotPresent
 
 
